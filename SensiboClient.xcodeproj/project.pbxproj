@@ -20,6 +20,7 @@
 		EF69E16F22117E6A00D7E75F /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF69E16E22117E6A00D7E75F /* BaseResponse.swift */; };
 		EF69E1722211800900D7E75F /* BaseResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF69E1712211800900D7E75F /* BaseResponseTests.swift */; };
 		EF69E1752211AAA300D7E75F /* MockSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF69E1742211AAA300D7E75F /* MockSession.swift */; };
+		EF69E1782211BE5700D7E75F /* SetPodStateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF69E1772211BE5700D7E75F /* SetPodStateRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		EF69E1712211800900D7E75F /* BaseResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponseTests.swift; sourceTree = "<group>"; };
 		EF69E1742211AAA300D7E75F /* MockSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSession.swift; sourceTree = "<group>"; };
 		EF69E1762211B7FC00D7E75F /* SensiboClientPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = SensiboClientPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		EF69E1772211BE5700D7E75F /* SetPodStateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPodStateRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 				EF69E1602211592200D7E75F /* PodState.swift */,
 				EF69E1662211609F00D7E75F /* PodStateLog.swift */,
 				EF69E16E22117E6A00D7E75F /* BaseResponse.swift */,
+				EF69E1772211BE5700D7E75F /* SetPodStateRequest.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF69E1782211BE5700D7E75F /* SetPodStateRequest.swift in Sources */,
 				EF69E16F22117E6A00D7E75F /* BaseResponse.swift in Sources */,
 				EF69E1672211609F00D7E75F /* PodStateLog.swift in Sources */,
 				EF69E151221130BB00D7E75F /* SensiboClient.swift in Sources */,

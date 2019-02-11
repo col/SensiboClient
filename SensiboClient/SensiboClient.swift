@@ -43,7 +43,7 @@ public class SensiboClient: NSObject {
     
     public func setPodState(podId: String, podState: PodState, callback: @escaping (Bool, Error?) -> ()) {
         let url = URL(string: "/api/v2/pods/\(podId)/acStates?apiKey=\(self.apiKey)", relativeTo: baseUrl)!
-        post(url: url, body: podState) { (response: BaseResponse<PodStateLog>?, error: Error?) in
+        post(url: url, body: SetPodStateRequest(acState: podState)) { (response: BaseResponse<PodStateLog>?, error: Error?) in
             callback(response?.isSuccess ?? false, error)
         }
     }
@@ -56,6 +56,7 @@ public class SensiboClient: NSObject {
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "POST"
         urlRequest.httpBody = try! JSONEncoder().encode(body)
+        urlRequest.allHTTPHeaderFields = [ "Content-Type": "application/json" ]
         sendRequest(request: urlRequest, callback: callback)
     }
     
