@@ -49,6 +49,7 @@
 		EF69E16E22117E6A00D7E75F /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
 		EF69E1712211800900D7E75F /* BaseResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponseTests.swift; sourceTree = "<group>"; };
 		EF69E1742211AAA300D7E75F /* MockSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSession.swift; sourceTree = "<group>"; };
+		EF69E1762211B7FC00D7E75F /* SensiboClientPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = SensiboClientPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +77,7 @@
 				EF69E138221130A100D7E75F /* SensiboClient */,
 				EF69E143221130A100D7E75F /* SensiboClientTests */,
 				EF69E137221130A100D7E75F /* Products */,
+				EF69E1762211B7FC00D7E75F /* SensiboClientPlayground.playground */,
 			);
 			sourceTree = "<group>";
 		};

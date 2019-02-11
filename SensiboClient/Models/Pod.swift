@@ -9,7 +9,7 @@
 import Foundation
 
 public class Pod: Codable {
-    let id: String
+    public let id: String
     
     public init(id: String) {
         self.id = id

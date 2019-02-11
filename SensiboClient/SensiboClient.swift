@@ -18,7 +18,7 @@ extension URLSession: Session {
 
 public class SensiboClient: NSObject {
     
-    let baseUrl = URL(string: "https://home.sensibo.com/api/v2")!
+    let baseUrl = URL(string: "https://home.sensibo.com")!
     let session: Session
     let apiKey: String
     
@@ -28,21 +28,21 @@ public class SensiboClient: NSObject {
     }
     
     public func getPods(callback: @escaping ([Pod]?, Error?) -> ()) {
-        let url = URL(string: "/users/me/pods?apiKey=\(self.apiKey)", relativeTo: baseUrl)!
+        let url = URL(string: "/api/v2/users/me/pods?apiKey=\(self.apiKey)", relativeTo: baseUrl)!
         get(url: url) { (response: BaseResponse<[Pod]>?, error: Error?) in
             callback(response?.result, error)
         }
     }
     
     public func getPodState(podId: String, callback: @escaping (PodState?, Error?) -> ()) {
-        let url = URL(string: "/pods/\(podId)/acStates?limit=1&apiKey=\(self.apiKey)", relativeTo: baseUrl)!
+        let url = URL(string: "/api/v2/pods/\(podId)/acStates?limit=1&apiKey=\(self.apiKey)", relativeTo: baseUrl)!
         get(url: url) { (response: BaseResponse<[PodStateLog]>?, error: Error?) in
             callback(response?.result?[0].acState, error)
         }
     }
     
     public func setPodState(podId: String, podState: PodState, callback: @escaping (Bool, Error?) -> ()) {
-        let url = URL(string: "/pods/\(podId)/acStates?apiKey=\(self.apiKey)", relativeTo: baseUrl)!
+        let url = URL(string: "/api/v2/pods/\(podId)/acStates?apiKey=\(self.apiKey)", relativeTo: baseUrl)!
         post(url: url, body: podState) { (response: BaseResponse<PodStateLog>?, error: Error?) in
             callback(response?.isSuccess ?? false, error)
         }

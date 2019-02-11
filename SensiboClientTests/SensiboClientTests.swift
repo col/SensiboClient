@@ -15,7 +15,7 @@ class SensiboClientTests: XCTestCase {
     var client: SensiboClient!
     
     override func setUp() {
-        client = SensiboClient(apiKey: "valid_api_key", session: mockSession)
+        client = SensiboClient(apiKey: "...", session: mockSession)
     }
 
     func testGetPods() {

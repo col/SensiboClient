@@ -37,12 +37,12 @@ public enum SwingMode: String, Codable {
 }
 
 public class PodState: Codable {
-    let on: Bool
-    let fanLevel: FanLevel
-    let temperatureUnit: TemperatureUnit
-    let targetTemperature: Int
-    let mode: ACMode
-    let swing: SwingMode
+    public let on: Bool
+    public let fanLevel: FanLevel
+    public let temperatureUnit: TemperatureUnit
+    public let targetTemperature: Int
+    public let mode: ACMode
+    public let swing: SwingMode
     
     public init(on: Bool, fanLevel: FanLevel, temperatureUnit: TemperatureUnit, targetTemperature: Int, mode: ACMode, swing: SwingMode) {
         self.on = on

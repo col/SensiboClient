@@ -9,8 +9,8 @@
 import Foundation
 
 public class BaseResponse<T: Codable>: Codable {
-    let status: String
-    let result: T?
+    public let status: String
+    public let result: T?
     
     public init(status: String, result: T?) {
         self.status = status

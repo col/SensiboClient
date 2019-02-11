@@ -9,12 +9,12 @@
 import Foundation
 
 public class PodStateLog: Codable {
-    let status: String
-    let reason: String
-    let acState: PodState
-    let changedProperties: [String]
-    let id: String
-    let failureReason: String?
+    public let status: String
+    public let reason: String
+    public let acState: PodState
+    public let changedProperties: [String]
+    public let id: String
+    public let failureReason: String?
     
     public init(status: String, reason: String, acState: PodState, changedProperties: [String], id: String, failureReason: String?) {
         self.status = status
