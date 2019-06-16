@@ -28,7 +28,7 @@ public class SensiboClient: NSObject {
     }
     
     public func getPods(callback: @escaping ([Pod]?, Error?) -> ()) {
-        let fields = "id,room"
+        let fields = "id,room,acState"
         let url = URL(string: "/api/v2/users/me/pods?fields=\(fields)&apiKey=\(self.apiKey)", relativeTo: baseUrl)!
         get(url: url) { (response: BaseResponse<[Pod]>?, error: Error?) in
             callback(response?.result, error)
@@ -42,10 +42,10 @@ public class SensiboClient: NSObject {
         }
     }
     
-    public func setPodState(podId: String, podState: PodState, callback: @escaping (Bool, Error?) -> ()) {
+    public func setPodState(podId: String, podState: PodState, callback: @escaping (PodState?, Error?) -> ()) {
         let url = URL(string: "/api/v2/pods/\(podId)/acStates?apiKey=\(self.apiKey)", relativeTo: baseUrl)!
         post(url: url, body: SetPodStateRequest(acState: podState)) { (response: BaseResponse<PodStateLog>?, error: Error?) in
-            callback(response?.isSuccess ?? false, error)
+            callback(response?.result?.acState, error)
         }
     }
     
@@ -62,10 +62,12 @@ public class SensiboClient: NSObject {
     }
     
     func sendRequest<T: Codable>(request: URLRequest, callback: @escaping (T?, Error?) -> ()) {
+        print(request.debugDescription)
         let dataTask = session.dataTask(with: request) { data, response, error in
             if let error = error {
                 callback(nil, error)
             } else if let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 {
+                print("Response: \(String(data: data, encoding: .utf8)!)")
                 if let getPodsResponse = try? JSONDecoder().decode(T.self, from: data) {
                     callback(getPodsResponse, nil)
                 } else {
@@ -76,6 +78,21 @@ public class SensiboClient: NSObject {
             }
         }
         dataTask.resume()
+    }
+}
+
+extension URLRequest {
+    
+    var debugDescription: String {
+        var description = "\nRequest URL: \(self.url?.absoluteString ?? "unknown")"
+        description += "\nRequest Method: \(self.httpMethod ?? "unknown")"
+        if let requestBody = self.httpBody {
+            description += "\nRequest Body: \(String(data: requestBody, encoding: .utf8)!)"
+        } else {
+            description += "\nRequest Body: none"
+        }
+        description += "\n"
+        return description
     }
 }
 

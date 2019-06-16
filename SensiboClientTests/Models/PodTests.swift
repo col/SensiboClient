@@ -27,6 +27,31 @@ class PodTests: XCTestCase {
         XCTAssertEqual(pod?.room?.icon, "bedroom")
     }
     
+    func testDecryptWithState() {
+        let json = """
+            {
+                "id": "asdf",
+                "acState": {
+                    "on": true,
+                    "fanLevel": "low",
+                    "temperatureUnit": "C",
+                    "targetTemperature": 24,
+                    "mode": "cool",
+                    "swing": "stopped"
+                }
+            }
+        """
+        let pod = try? JSONDecoder().decode(Pod.self, from: json.data(using: .utf8)!)
+        XCTAssertNotNil(pod)
+        XCTAssertEqual(pod?.id, "asdf")
+        XCTAssertEqual(pod?.state?.on, true)
+        XCTAssertEqual(pod?.state?.fanLevel, .low)
+        XCTAssertEqual(pod?.state?.temperatureUnit, .celsius)
+        XCTAssertEqual(pod?.state?.targetTemperature, 24)
+        XCTAssertEqual(pod?.state?.mode, .cool)
+        XCTAssertEqual(pod?.state?.swing, .stopped)
+    }
+    
     func testNameWithoutRoomReturnsId() {
         let pod = Pod(id: "asdf")
         XCTAssertEqual(pod.name(), "asdf")

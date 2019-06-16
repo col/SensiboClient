@@ -11,10 +11,12 @@ import Foundation
 public class Pod: Codable {
     public let id: String
     public let room: Room?
+    public var state: PodState?
     
-    public init(id: String, room: Room? = nil) {
+    public init(id: String, room: Room? = nil, state: PodState? = nil) {
         self.id = id
         self.room = room
+        self.state = state
     }
     
     public func name() -> String {
@@ -22,5 +24,11 @@ public class Pod: Codable {
             return room.name
         }
         return id
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case room
+        case state = "acState"
     }
 }

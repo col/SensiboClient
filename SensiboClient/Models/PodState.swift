@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum FanLevel: String, Codable {
+public enum FanLevel: String, Codable, CustomStringConvertible, CaseIterable {
     case quiet = "quiet"
     case low = "low"
     case mediumLow = "medium_low"
@@ -16,24 +16,76 @@ public enum FanLevel: String, Codable {
     case mediumHigh = "medium_high"
     case high = "high"
     case auto = "auto"
+    
+    public var description: String {
+        switch self {
+        case .quiet:
+            return "Quiet"
+        case .low:
+            return "Low"
+        case .mediumLow:
+            return "Medium Low"
+        case .medium:
+            return "Medium"
+        case .mediumHigh:
+            return "Medium High"
+        case .high:
+            return "High"
+        case .auto:
+            return "Auto"
+        }
+    }
 }
 
-public enum TemperatureUnit: String, Codable {
+public enum TemperatureUnit: String, Codable, CustomStringConvertible, CaseIterable {
     case celsius = "C"
     case fahrenheit = "F"
+    
+    public var description: String {
+        switch self {
+        case .celsius:
+            return "Celsius"
+        case .fahrenheit:
+            return "Fahrenheit"
+        }
+    }
 }
 
-public enum ACMode: String, Codable {
+public enum ACMode: String, Codable, CustomStringConvertible, CaseIterable {
     case dry = "dry"
     case cool = "cool"
     case fan = "fan"
     case heat = "heat"
     case auto = "auto"
+    
+    public var description: String {
+        switch self {
+        case .dry:
+            return "Dry"
+        case .cool:
+            return "Cool"
+        case .fan:
+            return "Fan"
+        case .heat:
+            return "Heat"
+        case .auto:
+            return "Auto"
+        }
+    }
 }
 
-public enum SwingMode: String, Codable {
+public enum SwingMode: String, Codable, CustomStringConvertible, CaseIterable {
     case stopped = "stopped"
     case fullRange = "rangeFull"
+    
+    public var description: String {
+        switch self {
+        case .stopped:
+            return "Stopped"
+        case .fullRange:
+            return "Full Range"
+        }
+    }
 }
 
 public class PodState: Codable {

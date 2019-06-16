@@ -85,4 +85,45 @@ class SensiboClientTests: XCTestCase {
         }
         wait(for: [expectation], timeout: 2.0)
     }
+    
+    func testSetPodState() {
+        mockSession.data = """
+            {
+                "status": "success",
+                "result": {
+                    "status": "Success",
+                    "reason": "UserAction",
+                    "acState": {
+                        "on": false,
+                        "fanLevel": "quiet",
+                        "temperatureUnit": "C",
+                        "targetTemperature": 25,
+                        "mode": "cool",
+                        "swing": "stopped"
+                    },
+                    "changedProperties": [
+                        "on"
+                    ],
+                    "id": "asdf",
+                    "failureReason": null
+                }
+            }
+        """.data(using: .utf8)
+        mockSession.response = HTTPURLResponse(url: URL(string: "http://example.com")!, statusCode: 200, httpVersion: nil, headerFields: nil)
+        
+        let expectation = XCTestExpectation(description: "callback")
+        let newState = PodState(on: false, fanLevel: .quiet, temperatureUnit: .celsius, targetTemperature: 25, mode: .cool, swing: .stopped)
+        client.setPodState(podId: "asdf", podState: newState) { podState, error in
+            XCTAssertNotNil(podState)
+            XCTAssertNil(error)
+            XCTAssertEqual(podState?.on, false)
+            XCTAssertEqual(podState?.fanLevel, .quiet)
+            XCTAssertEqual(podState?.temperatureUnit, .celsius)
+            XCTAssertEqual(podState?.targetTemperature, 25)
+            XCTAssertEqual(podState?.mode, .cool)
+            XCTAssertEqual(podState?.swing, .stopped)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 2.0)
+    }
 }

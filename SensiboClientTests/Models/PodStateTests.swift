@@ -22,5 +22,33 @@ class PodStateTests: XCTestCase {
         XCTAssertEqual(podState?.mode, .cool)
         XCTAssertEqual(podState?.swing, .stopped)
     }
+    
+    func testFanLevelDisplayString() {
+        XCTAssertEqual(FanLevel.quiet.description, "Quiet")
+        XCTAssertEqual(FanLevel.low.description, "Low")
+        XCTAssertEqual(FanLevel.mediumLow.description, "Medium Low")
+        XCTAssertEqual(FanLevel.medium.description, "Medium")
+        XCTAssertEqual(FanLevel.mediumHigh.description, "Medium High")
+        XCTAssertEqual(FanLevel.high.description, "High")
+        XCTAssertEqual(FanLevel.auto.description, "Auto")
+    }
+    
+    func testTemperatureUnitDescription() {
+        XCTAssertEqual(TemperatureUnit.celsius.description, "Celsius")
+        XCTAssertEqual(TemperatureUnit.fahrenheit.description, "Fahrenheit")
+    }
+    
+    func testACModeDescription() {
+        XCTAssertEqual(ACMode.fan.description, "Fan")
+        XCTAssertEqual(ACMode.dry.description, "Dry")
+        XCTAssertEqual(ACMode.cool.description, "Cool")
+        XCTAssertEqual(ACMode.heat.description, "Heat")
+        XCTAssertEqual(ACMode.auto.description, "Auto")
+    }
+    
+    func testSwingModeDescription() {
+        XCTAssertEqual(SwingMode.stopped.description, "Stopped")
+        XCTAssertEqual(SwingMode.fullRange.description, "Full Range")
+    }
 }
 
