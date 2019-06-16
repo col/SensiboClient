@@ -28,7 +28,8 @@ public class SensiboClient: NSObject {
     }
     
     public func getPods(callback: @escaping ([Pod]?, Error?) -> ()) {
-        let url = URL(string: "/api/v2/users/me/pods?apiKey=\(self.apiKey)", relativeTo: baseUrl)!
+        let fields = "id,room"
+        let url = URL(string: "/api/v2/users/me/pods?fields=\(fields)&apiKey=\(self.apiKey)", relativeTo: baseUrl)!
         get(url: url) { (response: BaseResponse<[Pod]>?, error: Error?) in
             callback(response?.result, error)
         }
@@ -64,11 +65,12 @@ public class SensiboClient: NSObject {
         let dataTask = session.dataTask(with: request) { data, response, error in
             if let error = error {
                 callback(nil, error)
-            } else if let data = data,
-                let response = response as? HTTPURLResponse,
-                response.statusCode == 200,
-                let getPodsResponse = try? JSONDecoder().decode(T.self, from: data) {
+            } else if let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 {
+                if let getPodsResponse = try? JSONDecoder().decode(T.self, from: data) {
                     callback(getPodsResponse, nil)
+                } else {
+                    callback(nil, SensiboError.invalidResponse)
+                }
             } else {
                 callback(nil, SensiboError.requestFailed)
             }
@@ -79,5 +81,6 @@ public class SensiboClient: NSObject {
 
 enum SensiboError: Error {
     case requestFailed
+    case invalidResponse
     case requestError(message: String)
 }

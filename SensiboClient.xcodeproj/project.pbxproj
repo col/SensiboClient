@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF5B178D22B61F8C00A8E632 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5B178C22B61F8C00A8E632 /* Room.swift */; };
 		EF69E140221130A100D7E75F /* SensiboClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF69E136221130A100D7E75F /* SensiboClient.framework */; };
 		EF69E145221130A100D7E75F /* SensiboClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF69E144221130A100D7E75F /* SensiboClientTests.swift */; };
 		EF69E147221130A100D7E75F /* SensiboClient.h in Headers */ = {isa = PBXBuildFile; fileRef = EF69E139221130A100D7E75F /* SensiboClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -21,6 +22,7 @@
 		EF69E1722211800900D7E75F /* BaseResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF69E1712211800900D7E75F /* BaseResponseTests.swift */; };
 		EF69E1752211AAA300D7E75F /* MockSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF69E1742211AAA300D7E75F /* MockSession.swift */; };
 		EF69E1782211BE5700D7E75F /* SetPodStateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF69E1772211BE5700D7E75F /* SetPodStateRequest.swift */; };
+		EF69E1B82212539400D7E75F /* SensiboClient.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EF69E136221130A100D7E75F /* SensiboClient.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,7 +35,21 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		EF69E1B72212537E00D7E75F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(BUILD_DIR)";
+			dstSubfolderSpec = 0;
+			files = (
+				EF69E1B82212539400D7E75F /* SensiboClient.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		EF5B178C22B61F8C00A8E632 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		EF69E136221130A100D7E75F /* SensiboClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SensiboClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF69E139221130A100D7E75F /* SensiboClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SensiboClient.h; sourceTree = "<group>"; };
 		EF69E13A221130A100D7E75F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -122,6 +138,7 @@
 				EF69E1662211609F00D7E75F /* PodStateLog.swift */,
 				EF69E16E22117E6A00D7E75F /* BaseResponse.swift */,
 				EF69E1772211BE5700D7E75F /* SetPodStateRequest.swift */,
+				EF5B178C22B61F8C00A8E632 /* Room.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -167,6 +184,7 @@
 				EF69E132221130A100D7E75F /* Sources */,
 				EF69E133221130A100D7E75F /* Frameworks */,
 				EF69E134221130A100D7E75F /* Resources */,
+				EF69E1B72212537E00D7E75F /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -256,6 +274,7 @@
 			files = (
 				EF69E1782211BE5700D7E75F /* SetPodStateRequest.swift in Sources */,
 				EF69E16F22117E6A00D7E75F /* BaseResponse.swift in Sources */,
+				EF5B178D22B61F8C00A8E632 /* Room.swift in Sources */,
 				EF69E1672211609F00D7E75F /* PodStateLog.swift in Sources */,
 				EF69E151221130BB00D7E75F /* SensiboClient.swift in Sources */,
 				EF69E1612211592200D7E75F /* PodState.swift in Sources */,
@@ -432,7 +451,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -459,7 +478,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.colharris.SensiboClient;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

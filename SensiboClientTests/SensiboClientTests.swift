@@ -21,10 +21,10 @@ class SensiboClientTests: XCTestCase {
     func testGetPods() {
         mockSession.data = """
             {
-                \"status\": \"success\",
-                \"result\": [
-                    {\"id\": \"asdf\"},
-                    {\"id\": \"qwer\"}
+                "status": "success",
+                "result": [
+                    {"id": "asdf", "room": { "name": "Bedroom", "icon": "bedroom" } },
+                    {"id": "qwer", "room": { "name": "Lounge Room", "icon": "lounge" }}
                 ]
             }
         """.data(using: .utf8)
@@ -36,7 +36,9 @@ class SensiboClientTests: XCTestCase {
             XCTAssertNil(error)
             XCTAssertEqual(pods?.count, 2)
             XCTAssertEqual(pods?[0].id, "asdf")
+            XCTAssertEqual(pods?[0].name(), "Bedroom")
             XCTAssertEqual(pods?[1].id, "qwer")
+            XCTAssertEqual(pods?[1].name(), "Lounge Room")
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 2.0)

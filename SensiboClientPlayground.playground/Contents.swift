@@ -8,7 +8,7 @@ client.getPods() { (pods, error) in
     }
     if let pods = pods {
         for pod in pods {
-            print("Pod: \(pod.id)")
+            print("Pod: \(pod.id) - Name: \(pod.name())")
         }
         
         let loungePod = pods[1]

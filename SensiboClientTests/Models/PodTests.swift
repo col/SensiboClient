@@ -17,4 +17,23 @@ class PodTests: XCTestCase {
         XCTAssertNotNil(pod)
         XCTAssertEqual(pod?.id, "asdf")
     }
+    
+    func testDecryptWithRoom() {
+        let json = "{ \"id\": \"asdf\", \"room\": { \"name\": \"Bedroom\", \"icon\": \"bedroom\" } }"
+        let pod = try? JSONDecoder().decode(Pod.self, from: json.data(using: .utf8)!)
+        XCTAssertNotNil(pod)
+        XCTAssertEqual(pod?.id, "asdf")
+        XCTAssertEqual(pod?.room?.name, "Bedroom")
+        XCTAssertEqual(pod?.room?.icon, "bedroom")
+    }
+    
+    func testNameWithoutRoomReturnsId() {
+        let pod = Pod(id: "asdf")
+        XCTAssertEqual(pod.name(), "asdf")
+    }
+    
+    func testNameWithRoomReturnsRoomName() {
+        let pod = Pod(id: "asdf", room: Room(name: "Bedroom", icon: "bedroom"))
+        XCTAssertEqual(pod.name(), "Bedroom")
+    }
 }

@@ -10,8 +10,17 @@ import Foundation
 
 public class Pod: Codable {
     public let id: String
+    public let room: Room?
     
-    public init(id: String) {
+    public init(id: String, room: Room? = nil) {
         self.id = id
+        self.room = room
+    }
+    
+    public func name() -> String {
+        if let room = self.room {
+            return room.name
+        }
+        return id
     }
 }
