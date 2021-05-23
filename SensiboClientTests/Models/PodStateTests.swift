@@ -49,6 +49,7 @@ class PodStateTests: XCTestCase {
     func testSwingModeDescription() {
         XCTAssertEqual(SwingMode.stopped.description, "Stopped")
         XCTAssertEqual(SwingMode.fullRange.description, "Full Range")
+        XCTAssertEqual(SwingMode.fixedMiddleTop.description, "Fixed Middle Top")
     }
 }
 

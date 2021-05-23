@@ -68,11 +68,13 @@ public class SensiboClient: NSObject {
                 callback(nil, error)
             } else if let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 {
                 print("Response: \(String(data: data, encoding: .utf8)!)")
-                if let getPodsResponse = try? JSONDecoder().decode(T.self, from: data) {
+                do {
+                    let getPodsResponse = try JSONDecoder().decode(T.self, from: data)
                     callback(getPodsResponse, nil)
-                } else {
+                } catch {
+                    print("Error parsing response: \(error)")
                     callback(nil, SensiboError.invalidResponse)
-                }
+                }                
             } else {
                 callback(nil, SensiboError.requestFailed)
             }

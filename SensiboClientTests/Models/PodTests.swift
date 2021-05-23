@@ -41,15 +41,20 @@ class PodTests: XCTestCase {
                 }
             }
         """
-        let pod = try? JSONDecoder().decode(Pod.self, from: json.data(using: .utf8)!)
-        XCTAssertNotNil(pod)
-        XCTAssertEqual(pod?.id, "asdf")
-        XCTAssertEqual(pod?.state?.on, true)
-        XCTAssertEqual(pod?.state?.fanLevel, .low)
-        XCTAssertEqual(pod?.state?.temperatureUnit, .celsius)
-        XCTAssertEqual(pod?.state?.targetTemperature, 24)
-        XCTAssertEqual(pod?.state?.mode, .cool)
-        XCTAssertEqual(pod?.state?.swing, .stopped)
+        do {
+            let pod = try JSONDecoder().decode(Pod.self, from: json.data(using: .utf8)!)
+            XCTAssertNotNil(pod)
+            XCTAssertEqual(pod.id, "asdf")
+            XCTAssertEqual(pod.state?.on, true)
+            XCTAssertEqual(pod.state?.fanLevel, .low)
+            XCTAssertEqual(pod.state?.temperatureUnit, .celsius)
+            XCTAssertEqual(pod.state?.targetTemperature, 24)
+            XCTAssertEqual(pod.state?.mode, .cool)
+            XCTAssertEqual(pod.state?.swing, .stopped)
+        } catch {
+            print("Error parsing Pod: \(error)")
+            XCTAssertTrue(false)
+        }
     }
     
     func testNameWithoutRoomReturnsId() {
