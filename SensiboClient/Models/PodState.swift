@@ -77,7 +77,14 @@ public enum ACMode: String, Codable, CustomStringConvertible, CaseIterable {
 public enum SwingMode: String, Codable, CustomStringConvertible, CaseIterable {
     case stopped = "stopped"
     case fullRange = "rangeFull"
-    case fixedMiddleTop = "fixedMiddleTop"
+    case fixedMiddleTop = "fixedMiddleTop"    
+    case fixedTop = "fixedTop"
+    case fixedMiddle = "fixedMiddle"
+    case fixedMiddleBottom = "fixedMiddleBottom"
+    case fixedBottom = "fixedBottom"
+    case rangeTop = "rangeTop"
+    case rangeMiddle = "rangeMiddle"
+    case rangeBottom = "rangeBottom"
     
     public var description: String {
         switch self {
@@ -87,6 +94,20 @@ public enum SwingMode: String, Codable, CustomStringConvertible, CaseIterable {
             return "Full Range"
         case .fixedMiddleTop:
             return "Fixed Middle Top"
+        case .fixedTop:
+            return "Fixed Top"
+        case .fixedMiddle:
+            return "Fixed Middle"
+        case .fixedMiddleBottom:
+            return "Fixed Middle Bottom"
+        case .fixedBottom:
+            return "Fixed Bottom"
+        case .rangeTop:
+            return "Range Top"
+        case .rangeMiddle:
+            return "Range Middle"
+        case .rangeBottom:
+            return "Range Bottom"
         }
     }
 }
